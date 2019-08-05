@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blog</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>userId</th>
+        <th>title</th>
+        <th>content</th>
+        <th>createdDate</th>
+    </tr>
+    <%
+    for (let i = 0; i < data.length; i++) {
+
+    %>
+        <tr>
+            <td><%=data[i].id%></td>
+            <td><%=data[i].userId%></td>
+            <td onclick="location.href='/blog/<%=data[i].id%>'"><%=data[i].title%></td>
+            <td><%=data[i].content%></td>
+            <td><%=data[i].createdDate%></td>
+        </tr>
+    <%
+    } %>
+</table>
+</body>
+</html>

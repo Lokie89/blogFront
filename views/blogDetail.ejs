@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BlogDeteail</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>id</th>
+        <td><input value="<%= data.id %>" id="id" disabled></td>
+    </tr>
+    <tr>
+        <th>userId</th>
+        <td><input value="<%= data.userId %>" id="userId"></td>
+    </tr>
+    <tr>
+        <th>title</th>
+        <td><input value="<%= data.title %>" id="title"></td>
+    </tr>
+    <tr>
+        <th>content</th>
+        <td><input value="<%= data.content %>" id="content"></td>
+    </tr>
+    <tr>
+        <th>createdDate</th>
+        <td><input value="<%= data.createDate %>" id="createDate" disabled></td>
+    </tr>
+</table>
+<button onclick="createBlog()">크리</button>
+<button onclick="updateBlog()">업</button>
+<button onclick="deleteBlog()">딜리</button>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+    let createBlog = () => {
+        httpRequest('post')
+    }
+    let updateBlog=()=>{
+        httpRequest('put')
+    }
+    let deleteBlog=()=>{
+        httpRequest('delete')
+    }
+
+    let httpRequest = (type) => {
+        let id = $('#id').val();
+        let userId = $('#userId').val();
+        let title = $('#title').val();
+        let content = $('#content').val();
+        let createdDate = $('#createdDate').val();
+        $.ajax({
+            url: '/blog/' + id,
+            type: type,
+            data: {
+                id: id,
+                userId: userId,
+                title: title,
+                content: content,
+                createdDate: createdDate
+            },
+            success:function(){
+                location.href="/blog"
+            }
+        })
+    }
+</script>
+</html>
